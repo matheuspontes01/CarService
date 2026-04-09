@@ -1,0 +1,11 @@
+{% extends "../base.html" %}
+
+{% block title %} Listagem de veículos {% endblock %}
+
+{% block conteudo %}
+<ul>
+    {% for veiculo in veiculos %}
+        <li>{{ veiculo.get_marca_display }} {{ veiculo.modelo }} - {{ veiculo.ano }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
