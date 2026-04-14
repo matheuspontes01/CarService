@@ -1,13 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Desenvolvimento WebMobile{% endblock %}</title>
-
-    <link rel="text/css" href="{% static 'css/base.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Sistema de Cadastro de Veículos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
-<body>
-    
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Sistema de Veículos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar-veiculos' %}">Veículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/">Administração</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4 py-lg-5">
+        {% block conteudo %}
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-7">
+                                <p class="text-uppercase text-muted small mb-2">Sistema de cadastro</p>
+                                <h1 class="display-6 fw-semibold mb-3">Cadastro de veículos</h1>
+                                <p class="text-muted mb-4">
+                                    Gerencie os veículos cadastrados no sistema de forma simples e objetiva.
+                                </p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a class="btn btn-primary" href="{% url 'listar-veiculos' %}">Ver veículos</a>
+                                    <a class="btn btn-outline-secondary" href="/admin/">Acessar admin</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="border rounded p-4 bg-light">
+                                    <h2 class="h5 mb-3">Resumo</h2>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-2">Cadastro de marca, modelo, ano, cor e combustível</li>
+                                        <li class="mb-2">Listagem dos veículos já registrados</li>
+                                        <li>Layout simples e responsivo com Bootstrap</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

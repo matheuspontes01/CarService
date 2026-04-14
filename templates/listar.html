@@ -1,11 +1,56 @@
-{% extends "../base.html" %}
+{% extends "base.html" %}
 
-{% block title %} Listagem de veículos {% endblock %}
+{% block title %}Listagem de veículos{% endblock %}
 
 {% block conteudo %}
-<ul>
-    {% for veiculo in veiculos %}
-        <li>{{ veiculo.get_marca_display }} {{ veiculo.modelo }} - {{ veiculo.ano }}</li>
-    {% endfor %}
-</ul>
+<div class="card shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+                <h1 class="h3 mb-1">Lista de veículos</h1>
+                <p class="text-muted mb-0">Veja os veículos cadastrados no sistema.</p>
+            </div>
+            <a class="btn btn-outline-secondary" href="/">Voltar para home</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">Combustível</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for veiculo in veiculos %}
+                    <tr>
+                        <td>
+                            {% if veiculo.foto %}
+                                <img src="{{ veiculo.foto.url }}" alt="Foto de {{ veiculo.modelo }}" class="img-thumbnail" style="width: 80px; height: 56px; object-fit: cover;">
+                            {% else %}
+                                <span class="text-muted">Sem foto</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ veiculo.get_marca_display }}</td>
+                        <td>{{ veiculo.modelo }}</td>
+                        <td>{{ veiculo.ano }}</td>
+                        <td>{{ veiculo.get_cor_display }}</td>
+                        <td>{{ veiculo.get_combustivel_display }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">
+                            Nenhum veículo cadastrado ainda.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
