@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Deletar Veículo {{ veiculo.modelo }}{% endblock %}
+
+{% block conteudo %}
+<form action="{% url 'deletar-veiculo' veiculo.pk %}" method="post">
+    {% csrf_token %}
+    <center>
+        <div class="alert alert-danger" role="alert">
+            <p>Tem certeza que deseja excluir o veículo {{ veiculo.get_marca_display }} {{ veiculo.modelo }}?</p>
+        </div>
+        <input type="submit" value="Confirmar" class="btn btn-danger">
+    </center>
+</form>
+{% endblock %}

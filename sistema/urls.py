@@ -23,5 +23,6 @@ from sistema.views import Login
 urlpatterns = [
     path('', Login.as_view(), name='login'),
     path('admin/', admin.site.urls),
-    path('veiculo/', include('veiculo.urls'), name='veiculo')
+    path('veiculo/', include('veiculo.urls'), name='veiculo'),
+    path('anuncio/', include('anuncio.urls'), name='anuncio')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

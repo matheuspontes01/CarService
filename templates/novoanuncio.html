@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro de Anúncios{% endblock %}
+
+{% block conteudo %}
+<div class="card shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+        <h1 class="h4 mb-4">Novo Anúncio</h1>
+
+        <form action="{% url 'criar-anuncio' %}" method="post" enctype="multipart/form-data" class="row g-3">
+            {% csrf_token %}
+
+            <div class="col-12 col-md-6">
+                <label for="id_titulo" class="form-label">Título</label>
+                {{ form.titulo }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_descricao" class="form-label">Descrição</label>
+                {{ form.descricao }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_valor" class="form-label">Valor</label>
+                {{ form.valor }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_veiculo" class="form-label">Veículo</label>
+                {{ form.veiculo }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_data_criacao" class="form-label">Data de criação</label>
+                {{ form.data_criacao }}
+            </div>
+
+            <div class="col-12 d-flex gap-2 mt-2">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="{% url 'listar-anuncios' %}" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

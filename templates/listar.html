@@ -69,7 +69,7 @@
                         <td>{{ veiculo.get_combustivel_display }}</td>
                         <td>
                             <a href="editar/{{ veiculo.pk }}/" class="btn btn-warning">Editar</a>
-                            <a href="#" class="btn btn-danger">Excluir</a>
+                            <a href="deletar/{{ veiculo.pk }}/" class="btn btn-danger">Excluir</a>
                         </td>
                     </tr>
                     {% empty %}

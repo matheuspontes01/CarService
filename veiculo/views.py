@@ -2,7 +2,7 @@ from django.http import FileResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView, View
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from veiculo.forms import FormularioVeiculo
@@ -46,3 +46,9 @@ class FotoVeiculo(View):
             raise Http404("Foto não encontrada ou acesso não autorizado.")
         except Exception as exception:
             raise exception
+        
+class DeletarVeiculos(LoginRequiredMixin, DeleteView):
+    # view para deletar um veículo existente
+    model = Veiculo
+    template_name = "deletar.html"
+    success_url = reverse_lazy('listar-veiculos')
