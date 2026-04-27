@@ -57,7 +57,7 @@
                         </p>
                         <p class="card-text">{{ anuncio.descricao }}</p>
                         <p class="fw-semibold mb-3">R$ {{ anuncio.valor }}</p>
-                        <a href="#" class="btn btn-warning">Editar</a><br>
+                        <a href="{% url 'editar-anuncio' anuncio.pk %}" class="btn btn-warning">Editar</a><br>
                         <a href="#" class="btn btn-danger">Excluir</a>
                     </div>
                 </div>

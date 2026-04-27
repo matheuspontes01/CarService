@@ -5,4 +5,4 @@ class FormularioAnuncio(ModelForm):
     # formulário para criar um novo anúncio
     class Meta:
         model = Anuncio
-        exclude = ['usuario']
+        fields = ['titulo', 'descricao', 'valor', 'veiculo']

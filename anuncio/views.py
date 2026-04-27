@@ -31,3 +31,10 @@ class CriarAnuncios(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.usuario = self.request.user
         return super().form_valid(form)
+
+class EditarAnuncios(LoginRequiredMixin, UpdateView):
+    #view para editar um anuncio existente
+    model = Anuncio
+    form_class = FormularioAnuncio
+    template_name = 'editaranuncio.html'
+    success_url = reverse_lazy('listar-anuncios')

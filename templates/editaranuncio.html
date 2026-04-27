@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Edição do Anúncio {{ anuncio.titulo }}{% endblock %}
+
+{% block conteudo %}
+<div class="card shadow-sm">
+    <div class="card-body p-4 p-lg-5">
+        <h1 class="h4 mb-4">Editar Anúncio</h1>
+
+        <form action="{% url 'editar-anuncio' anuncio.pk %}" method="post" enctype="multipart/form-data" class="row g-3">
+            {% csrf_token %}
+
+            <div class="col-12 col-md-6">
+                <label for="id_marca" class="form-label">Título</label>
+                {{ form.titulo }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_modelo" class="form-label">Descrição</label>
+                {{ form.descricao }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_ano" class="form-label">Valor</label>
+                {{ form.valor }}
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="id_cor" class="form-label">Veículo</label>
+                {{ form.veiculo }}
+            </div>
+
+            <div class="col-12 d-flex gap-2 mt-2">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="{% url 'listar-anuncios' %}" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
