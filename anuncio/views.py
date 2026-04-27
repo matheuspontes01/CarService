@@ -38,3 +38,9 @@ class EditarAnuncios(LoginRequiredMixin, UpdateView):
     form_class = FormularioAnuncio
     template_name = 'editaranuncio.html'
     success_url = reverse_lazy('listar-anuncios')
+
+class DeletarAnuncios(LoginRequiredMixin, DeleteView):
+    #view para deletar um anuncio existente
+    model = Anuncio
+    template_name = 'deletaranuncio.html'
+    success_url = reverse_lazy('listar-anuncios')
