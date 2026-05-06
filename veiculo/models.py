@@ -1,5 +1,6 @@
 from django.db import models
 from veiculo.consts import *
+from datetime import datetime
 
 # Create your models here.
 class Veiculo(models.Model):
@@ -12,3 +13,11 @@ class Veiculo(models.Model):
 
     def __str__(self):
         return f'{self.get_marca_display()} {self.modelo} ({self.ano})'
+
+    def anos_de_uso(self):
+        return datetime.now().year - self.ano
+
+    # Propriedade para verificar se o veículo é novo (ano atual) -> Não se torna informação armazenada no banco, mas sim uma propriedade calculada dinamicamente
+    @property
+    def veiculo_novo(self):
+        return self.ano == datetime.now().year
