@@ -11,8 +11,11 @@ class Login(View):
     Class Based View para autenticação de usuários
     """
     def get(self, request):
-        contexto = {}
-        return render(request, 'autenticacao.html', contexto)
+        contexto = {'mensagem': ''}
+        if request.user.is_authenticated:
+            return redirect("/veiculo")
+        else:
+            return render(request, 'autenticacao.html', contexto)
 
     def post(self, request):
         # Pegando os dados do formulário de login

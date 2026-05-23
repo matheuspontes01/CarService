@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true" class="login-page">
+  <div class="login-background"></div>
+
+  <div class="login-shell">
+    <section class="login-hero">
+      <div class="brand-mark">S</div>
+      <p class="eyebrow">Bem-vindo de volta</p>
+      <h1>Entre na sua conta</h1>
+      <p class="subtitle">
+        Acesse seus anúncios, veículos e mensagens em um só lugar.
+      </p>
+    </section>
+
+    <ion-card class="login-card">
+      <ion-card-content>
+        <form (ngSubmit)="entrar()" #loginForm="ngForm">
+          <ion-item class="input-item" lines="none">
+            <ion-input
+              name="username"
+              type="text"
+              label="Username"
+              labelPlacement="stacked"
+              placeholder="Digite seu username"
+              [(ngModel)]="instancia.username"
+              autocomplete="username"
+              required
+            ></ion-input>
+          </ion-item>
+
+          <ion-item class="input-item" lines="none">
+            <ion-input
+              name="password"
+              type="password"
+              label="Password"
+              labelPlacement="stacked"
+              placeholder="Digite sua password"
+              [(ngModel)]="instancia.password"
+              autocomplete="current-password"
+              required
+            ></ion-input>
+          </ion-item>
+
+          <div class="login-actions">
+            <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">
+              Entrar
+            </ion-button>
+
+            <ion-button expand="block" fill="clear" type="button">
+              Esqueci minha senha
+            </ion-button>
+          </div>
+        </form>
+
+        <p class="login-footer">
+          Ainda não tem conta? <a href="#">Criar conta</a>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

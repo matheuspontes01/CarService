@@ -1,0 +1,24 @@
+{
+  "name": "sistema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheuspontes01/CarService.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheuspontes01/CarService/issues"
+  },
+  "homepage": "https://github.com/matheuspontes01/CarService#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "ionic": "^5.4.16"
+  }
+}
