@@ -4,13 +4,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import DestroyAPIView, ListAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 
 from veiculo.forms import FormularioVeiculo
 from veiculo.models import Veiculo
-from veiculo.serializers import SerializadorVeiculo
+from veiculo.serializers import SerializadorVeiculo, SerializadorVeiculoCompleto
 
 # Create your views here.
 class ListarVeiculos(LoginRequiredMixin, ListView):
@@ -62,6 +62,23 @@ class APIListarVeiculos(ListAPIView):
     serializer_class = SerializadorVeiculo
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated] # Pode criar outras classes de permissões, como IsAdminUser, IsAuthenticatedOrReadOnly, etc.
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
+    
+class APIDeletarVeiculos(DestroyAPIView):
+    serializer_class = SerializadorVeiculo
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Veiculo.objects.all()
+
+
+class APIDetalharAtualizarVeiculo(RetrieveUpdateAPIView):
+    serializer_class = SerializadorVeiculoCompleto
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Veiculo.objects.all()

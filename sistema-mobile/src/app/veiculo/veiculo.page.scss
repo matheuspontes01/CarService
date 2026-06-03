@@ -22,6 +22,38 @@
 	color: rgba(248, 250, 252, 0.78);
 }
 
+.edicao-veiculo {
+	margin-bottom: 20px;
+	padding: 16px;
+	border-radius: 20px;
+	background: rgba(17, 24, 39, 0.95);
+	box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
+}
+
+.cabecalho-formulario {
+	margin-bottom: 14px;
+}
+
+.cabecalho-formulario .eyebrow {
+	margin: 0 0 8px;
+	font-size: 0.76rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(248, 250, 252, 0.72);
+}
+
+.cabecalho-formulario h2 {
+	margin: 0 0 8px;
+	font-size: 1.25rem;
+	font-weight: 800;
+	color: #f8fafc;
+}
+
+.cabecalho-formulario p {
+	margin: 0;
+	color: rgba(248, 250, 252, 0.82);
+}
+
 .estado-vazio {
 	display: flex;
 	flex-direction: column;
@@ -64,6 +96,66 @@
 	border-radius: 10px;
 }
 
+.foto-preview {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px;
+	margin-bottom: 14px;
+	border-radius: 18px;
+	background: rgba(15, 23, 42, 0.75);
+}
+
+.foto-preview .miniatura {
+	width: 88px;
+	height: 68px;
+	flex: 0 0 88px;
+}
+
+.foto-preview .miniatura img {
+	border-radius: 12px;
+}
+
+.rotulo {
+	margin: 0 0 4px;
+	font-size: 0.76rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(248, 250, 252, 0.68);
+}
+
+.foto-preview h3 {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #f8fafc;
+}
+
+.formulario-edicao {
+	display: grid;
+	gap: 12px;
+}
+
+.campo-edicao {
+	--background: #111827;
+	--border-radius: 16px;
+	--padding-start: 12px;
+	--inner-padding-end: 12px;
+	color: #e5e7eb;
+}
+
+.campo-edicao ion-input,
+.campo-edicao ion-select {
+	--color: #f8fafc;
+	--placeholder-color: rgba(229, 231, 235, 0.6);
+}
+
+.acoes-formulario {
+	display: grid;
+	gap: 8px;
+	margin-top: 8px;
+}
+
 .veiculo-conteudo {
 	margin: 0;
 	color: #e5e7eb;
@@ -92,6 +184,10 @@
 }
 
 .botao-excluir {
+	width: 64px;
+}
+
+.botao-editar {
 	width: 64px;
 }
 

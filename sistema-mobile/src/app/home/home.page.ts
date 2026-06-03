@@ -79,7 +79,7 @@ export class HomePage {
 
           // Finaliza autenticação e redireciona para interface inicial
           loading.dismiss();
-          this.controleNavegacao.navigateRoot('/dashboard');
+          this.controleNavegacao.navigateRoot('/veiculo');
         } else {
 
           // Finaliza autenticação e apresente mensagem de erro

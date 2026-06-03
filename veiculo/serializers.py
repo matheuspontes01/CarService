@@ -22,3 +22,22 @@ class SerializadorVeiculo(ModelSerializer):
 
     def get_nome_combustivel(self, instancia):
         return instancia.get_combustivel_display()
+
+
+class SerializadorVeiculoCompleto(ModelSerializer):
+    nome_marca = SerializerMethodField()
+    nome_cor = SerializerMethodField()
+    nome_combustivel = SerializerMethodField()
+
+    class Meta:
+        model = Veiculo
+        fields = '__all__'
+
+    def get_nome_marca(self, instancia):
+        return instancia.get_marca_display()
+
+    def get_nome_cor(self, instancia):
+        return instancia.get_cor_display()
+
+    def get_nome_combustivel(self, instancia):
+        return instancia.get_combustivel_display()

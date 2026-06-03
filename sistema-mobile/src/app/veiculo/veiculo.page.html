@@ -15,6 +15,110 @@
       <p *ngIf="!carregandoLista">Veja abaixo os veículos cadastrados no sistema web.</p>
     </section>
 
+    <section *ngIf="mostrarEdicaoVeiculo" class="edicao-veiculo">
+      <div class="cabecalho-formulario">
+        <p class="eyebrow">Atualize os dados do veículo</p>
+        <h2>Editar cadastro</h2>
+        <p>Altere as informações do veículo e salve as mudanças no sistema web.</p>
+      </div>
+
+      <div *ngIf="carregandoEdicao" class="estado-vazio">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Carregando veículo...</p>
+      </div>
+
+      <form *ngIf="!carregandoEdicao" (ngSubmit)="salvarAlteracoesVeiculo()" #formularioEdicao="ngForm" class="formulario-edicao">
+        <div class="foto-preview">
+          <ion-thumbnail class="miniatura">
+            <img [src]="obterFoto(veiculoEditando.foto)" [alt]="veiculoEditando.nome_marca + ' ' + veiculoEditando.modelo" />
+          </ion-thumbnail>
+          <div>
+            <p class="rotulo">Foto atual</p>
+            <h3>{{ veiculoEditando.nome_marca || 'Veículo' }} {{ veiculoEditando.modelo }}</h3>
+          </div>
+        </div>
+
+        <ion-item class="campo-edicao" lines="none">
+          <ion-select
+            name="marca"
+            label="Marca"
+            labelPlacement="stacked"
+            placeholder="Selecione a marca"
+            [(ngModel)]="veiculoEditando.marca"
+            required
+          >
+            <ion-select-option *ngFor="let marca of marcas" [value]="marca.valor">
+              {{ marca.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="campo-edicao" lines="none">
+          <ion-input
+            name="modelo"
+            type="text"
+            label="Modelo"
+            labelPlacement="stacked"
+            placeholder="Informe o modelo"
+            [(ngModel)]="veiculoEditando.modelo"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="campo-edicao" lines="none">
+          <ion-input
+            name="ano"
+            type="number"
+            label="Ano"
+            labelPlacement="stacked"
+            placeholder="Ex.: 2024"
+            [(ngModel)]="veiculoEditando.ano"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="campo-edicao" lines="none">
+          <ion-select
+            name="cor"
+            label="Cor"
+            labelPlacement="stacked"
+            placeholder="Selecione a cor"
+            [(ngModel)]="veiculoEditando.cor"
+            required
+          >
+            <ion-select-option *ngFor="let cor of cores" [value]="cor.valor">
+              {{ cor.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="campo-edicao" lines="none">
+          <ion-select
+            name="combustivel"
+            label="Combustível"
+            labelPlacement="stacked"
+            placeholder="Selecione o combustível"
+            [(ngModel)]="veiculoEditando.combustivel"
+            required
+          >
+            <ion-select-option *ngFor="let combustivel of combustiveis" [value]="combustivel.valor">
+              {{ combustivel.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="acoes-formulario">
+          <ion-button expand="block" type="submit" [disabled]="formularioEdicao.invalid || salvandoEdicao">
+            {{ salvandoEdicao ? 'Salvando...' : 'Salvar alterações' }}
+          </ion-button>
+
+          <ion-button expand="block" fill="clear" type="button" (click)="fecharEdicaoVeiculo()">
+            Cancelar
+          </ion-button>
+        </div>
+      </form>
+    </section>
+
     <div *ngIf="carregandoLista" class="estado-vazio">
       <ion-spinner name="crescent"></ion-spinner>
       <p>Carregando veículos...</p>
@@ -41,10 +145,21 @@
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger" class="botao-excluir">
+        <ion-item-option color="tertiary" class="botao-editar" (click)="editarVeiculo(veiculo)">
+          <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" class="botao-excluir" (click)="abrirConfirmacaoExclusao(veiculo)">
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </div>
+
+  <ion-alert
+    [isOpen]="mostrarConfirmacaoExclusao"
+    header="Excluir veículo"
+    [message]="obterMensagemConfirmacaoExclusao()"
+    [buttons]="botoesConfirmacaoExclusao"
+    (didDismiss)="fecharConfirmacaoExclusao()"
+  ></ion-alert>
 </ion-content>
