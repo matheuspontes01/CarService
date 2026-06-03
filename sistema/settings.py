@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_5)wg!elo(z+d79yy*maf-6ir=7(4k*c$_8j7lsi5!%hky%p54
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'veiculo.apps.VeiculoConfig',
     'anuncio.apps.AnuncioConfig',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,3 +135,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR
 
 LOGIN_URL = '/'
+
+# Allow CORS during development (adjust for production)
+CORS_ALLOW_ALL_ORIGINS = True

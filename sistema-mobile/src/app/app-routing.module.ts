@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'veiculo',
+    loadChildren: () => import('./veiculo/veiculo.module').then( m => m.VeiculoPageModule)
+  },
 ];
 
 @NgModule({

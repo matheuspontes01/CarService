@@ -13,14 +13,14 @@
 
     <ion-card class="login-card">
       <ion-card-content>
-        <form (ngSubmit)="entrar()" #loginForm="ngForm">
+        <form (ngSubmit)="autenticarUsuario()" #loginForm="ngForm">
           <ion-item class="input-item" lines="none">
             <ion-input
               name="username"
               type="text"
-              label="Username"
+              label="Usuário"
               labelPlacement="stacked"
-              placeholder="Digite seu username"
+              placeholder="Digite seu usuário"
               [(ngModel)]="instancia.username"
               autocomplete="username"
               required
@@ -30,22 +30,26 @@
           <ion-item class="input-item" lines="none">
             <ion-input
               name="password"
-              type="password"
-              label="Password"
+              [type]="mostrarSenha ? 'text' : 'password'"
+              label="Senha"
               labelPlacement="stacked"
-              placeholder="Digite sua password"
+              placeholder="Digite sua senha"
               [(ngModel)]="instancia.password"
               autocomplete="current-password"
               required
             ></ion-input>
           </ion-item>
 
+          <ion-button expand="block" fill="clear" size="small" type="button" (click)="alternarSenha()">
+            {{ mostrarSenha ? 'Ocultar senha' : 'Mostrar senha' }}
+          </ion-button>
+
           <div class="login-actions">
             <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">
               Entrar
             </ion-button>
 
-            <ion-button expand="block" fill="clear" type="button">
+            <ion-button expand="block" fill="clear" type="button" (click)="recuperarSenha()">
               Esqueci minha senha
             </ion-button>
           </div>

@@ -1,0 +1,101 @@
+.veiculo-page {
+	--background: #0f172a;
+}
+
+.pagina-conteudo {
+	padding: 16px;
+	color: #f8fafc;
+}
+
+.cabecalho-lista {
+	margin-bottom: 16px;
+}
+
+.cabecalho-lista h2 {
+	margin: 0 0 8px;
+	font-size: 1.4rem;
+	font-weight: 700;
+}
+
+.cabecalho-lista p {
+	margin: 0;
+	color: rgba(248, 250, 252, 0.78);
+}
+
+.estado-vazio {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 24px 0;
+	color: rgba(248, 250, 252, 0.9);
+}
+
+.estado-vazio ion-icon {
+	font-size: 1.6rem;
+}
+
+.veiculo-sliding {
+	margin-bottom: 12px;
+	border-radius: 16px;
+	overflow: hidden;
+	background: #111827;
+}
+
+.veiculo-item {
+	--background: #111827;
+	--padding-start: 10px;
+	--inner-padding-end: 10px;
+	--min-height: 96px;
+	align-items: center;
+}
+
+.veiculo-miniatura {
+	width: 84px;
+	height: 64px;
+	margin: 10px 12px 10px 0;
+	flex: 0 0 84px;
+}
+
+.veiculo-miniatura img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.veiculo-conteudo {
+	margin: 0;
+	color: #e5e7eb;
+}
+
+.veiculo-conteudo .marca {
+	margin-bottom: 4px;
+	font-size: 0.72rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(229, 231, 235, 0.65);
+}
+
+.veiculo-conteudo h3 {
+	margin: 0 0 6px;
+	font-size: 1rem;
+	font-weight: 700;
+	color: #f9fafb;
+}
+
+.veiculo-conteudo p {
+	margin: 0;
+	font-size: 0.85rem;
+	line-height: 1.45;
+	color: rgba(229, 231, 235, 0.86);
+}
+
+.botao-excluir {
+	width: 64px;
+}
+
+ion-item-option ion-icon {
+	font-size: 1.2rem;
+}
+
